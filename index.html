@@ -3,279 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmet Tekeli Erkek Kuaförü | Premium Style</title>
+    <title>Ahmet Tekeli | Berber Yönetim Sistemi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Genel Ayarlar */
         :root {
-            --primary: #e67e22; /* Kehribar Vurgu */
-            --bg-dark: #0f0f0f;
-            --glass: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --primary: #d4af37; /* Altın sarısı detaylar */
+            --bg: #0a0a0a;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: #eee; scroll-behavior: smooth; }
+        
+        .glass { background: var(--card-bg); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 15px; }
+        
+        nav { position: fixed; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; background: rgba(0,0,0,0.9); z-index: 1000; border-bottom: 1px solid var(--border); }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-weight: 500; font-size: 0.9rem; }
 
-        body {
-            background: var(--bg-dark);
-            background-image: radial-gradient(circle at 50% -20%, #2c3e50, #0f0f0f);
-            color: #fff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        section { padding: 100px 8%; min-height: 100vh; }
+        .title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: var(--primary); text-transform: uppercase; letter-spacing: 3px; }
 
-        /* Glassmorphism Ortak Sınıf */
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            transition: 0.3s ease;
-        }
+        /* Galeri */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .gallery-item { height: 300px; background: #222; border-radius: 10px; overflow: hidden; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
+        .gallery-item:hover img { opacity: 1; transform: scale(1.1); }
 
-        /* Navbar */
-        nav {
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(15, 15, 15, 0.8);
-        }
+        /* Randevu Sistemi */
+        .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: var(--primary); }
+        input, select { width: 100%; padding: 12px; background: #1a1a1a; border: 1px solid var(--border); color: #fff; border-radius: 8px; }
+        
+        /* Yönetim Paneli */
+        .admin-panel { background: #111; padding: 40px; margin-top: 50px; border-top: 2px solid var(--primary); }
+        .admin-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab-btn { padding: 10px 20px; cursor: pointer; background: #222; border: none; color: #fff; border-radius: 5px; }
+        .tab-btn.active { background: var(--primary); color: #000; }
+        .appointment-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .appointment-table th, .appointment-table td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
+        
+        .status-badge { padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; background: #27ae60; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-
-        /* Hero Bölümü */
-        .hero {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            background: linear-gradient(to right, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #ccc;
-            margin-bottom: 30px;
-        }
-
-        .btn-main {
-            padding: 15px 40px;
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
-            transition: 0.3s;
-        }
-
-        .btn-main:hover {
-            transform: scale(1.05);
-            background: #d35400;
-        }
-
-        /* Hizmetler & Randevu */
-        .section {
-            padding: 80px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            padding: 40px;
-            text-align: center;
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-        }
-
-        /* Personel / Ustalar */
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .staff-card {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .staff-card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            border: 2px solid var(--primary);
-        }
-
-        /* İletişim / Alt Bilgi */
-        footer {
-            padding: 50px 10%;
-            text-align: center;
-            border-top: 1px solid var(--glass-border);
-            margin-top: 50px;
-        }
-
-        .social-links a {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Mobil Uyumluluk */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-        }
+        footer { text-align: center; padding: 40px; border-top: 1px solid var(--border); color: #666; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Ahmet Tekeli</div>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+<nav>
+    <div style="font-weight: 900; color: var(--primary);">AHMET TEKELİ</div>
+    <div class="nav-links">
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#randevu">Randevu</a>
+        <a href="#yonetim" style="color: var(--primary);">Yönetim Paneli</a>
+    </div>
+</nav>
+
+<!-- Hakkımızda -->
+<section id="hakkimizda">
+    <h2 class="title">Hakkımızda</h2>
+    <div class="glass" style="padding: 40px; max-width: 800px; margin: 0 auto; text-align: center;">
+        <p>Ahmet Tekeli Erkek Kuaförü olarak, esnaf kültürünün samimiyetini modern tasarım çizgileriyle birleştiriyoruz. Sadece saç kesmiyoruz; her koltuğumuzda ayrı bir hikaye, her makas darbesinde ayrı bir özen sunuyoruz. Ercan ve Efe ile birlikte dükkanımızda profesyonelliği ve dostluğu aynı önlükte buluşturduk.</p>
+    </div>
+</section>
+
+<!-- Hizmetler -->
+<section id="hizmetler">
+    <h2 class="title">Hizmetler</h2>
+    <div class="gallery-grid">
+        <div class="glass" style="padding:30px; text-align:center;">
+            <h3>Saç Kesim</h3>
+            <p style="color: var(--primary);">150 TL</p>
         </div>
-    </nav>
-
-    <section class="hero">
-        <h1>Ahmet Tekeli Erkek Kuaförü</h1>
-        <p>Geleneksel Esnaf Kültürü, Modern Kesim Sanatı.</p>
-        <a href="#randevu" class="btn-main">ŞİMDİ RANDEVU AL</a>
-    </section>
-
-    <section class="section" id="hizmetler">
-        <h2 class="section-title">Hizmetlerimiz</h2>
-        <div class="grid">
-            <div class="glass-card service-card">
-                <i class="fas fa-cut"></i>
-                <h3>Stil Kesim</h3>
-                <p>Size en uygun yüz hattına göre modern saç tasarımı.</p>
-            </div>
-            <div class="glass-card service-card">
-                <i class="fas fa-razor"></i>
-                <h3>Sakal Tasarımı</h3>
-                <p>Sıcak havlu ve ustura ile pürüzsüz hatlar.</p>
-            </div>
-            <div class="glass-card service-card">
-                <i class="fas fa-spa"></i>
-                <h3>Cilt Bakımı</h3>
-                <p>Profesyonel maske ve buhar terapisi ile tazelenin.</p>
-            </div>
+        <div class="glass" style="padding:30px; text-align:center;">
+            <h3>Sakal Tasarım</h3>
+            <p style="color: var(--primary);">100 TL</p>
         </div>
-    </section>
-
-    <section class="section" id="ekibimiz">
-        <h2 class="section-title">Ustalarımız</h2>
-        <div class="staff-grid">
-            <div class="glass-card staff-card">
-                <img src="https://via.placeholder.com/100" alt="Ahmet">
-                <h4>Ahmet Tekeli</h4>
-                <p>Master Barber</p>
-            </div>
-            <div class="glass-card staff-card">
-                <img src="https://via.placeholder.com/100" alt="Ercan">
-                <h4>Ercan</h4>
-                <p>Sakalların Efendisi</p>
-            </div>
-            <div class="glass-card staff-card">
-                <img src="https://via.placeholder.com/100" alt="Efe">
-                <h4>Efe</h4>
-                <p>Stil Uzmanı</p>
-            </div>
+        <div class="glass" style="padding:30px; text-align:center;">
+            <h3>Cilt Bakımı</h3>
+            <p style="color: var(--primary);">200 TL</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="section" id="randevu">
-        <div class="glass-card" style="padding: 50px; text-align: center;">
-            <h2 style="margin-bottom: 20px;">Dijital Randevu</h2>
-            <form id="randevuForm">
-                <input type="text" placeholder="Adınız Soyadınız" style="width: 80%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;"><br>
-                <select style="width: 80%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
-                    <option>Usta Seçin...</option>
-                    <option>Ahmet</option>
-                    <option>Ercan</option>
-                    <option>Efe</option>
-                </select><br>
-                <button type="button" class="btn-main" onclick="alert('Randevu talebiniz alındı! Sizinle iletişime geçeceğiz.')">TALEP GÖNDER</button>
-            </form>
+<!-- Galeri -->
+<section id="galeri">
+    <h2 class="title">Galeri</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=500&q=60"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=500&q=60"></div>
+        <div class="gallery-item"><img src="https://images.unsplash.com/photo-1599351431247-f10b21ce5012?auto=format&fit=crop&w=500&q=60"></div>
+    </div>
+</section>
+
+<!-- Randevu -->
+<section id="randevu">
+    <h2 class="title">Hızlı Randevu</h2>
+    <div class="booking-container">
+        <div class="glass" style="padding:30px;">
+            <div class="form-group">
+                <label>Berber Seçin</label>
+                <select id="berberSec">
+                    <option value="Ahmet">Ahmet Tekeli</option>
+                    <option value="Ercan">Ercan (Sakal Uzmanı)</option>
+                    <option value="Efe">Efe (Stil Uzmanı)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Müşteri Adı</label>
+                <input type="text" id="musteriAd" placeholder="Adınız Soyadınız">
+            </div>
+            <div class="form-group">
+                <label>Tarih</label>
+                <input type="date" id="randevuTarih">
+            </div>
+            <div class="form-group">
+                <label>Saat</label>
+                <select id="randevuSaat">
+                    <option>09:00</option><option>10:00</option>
+                    <option>11:00</option><option>13:00</option>
+                    <option>14:00</option><option>15:00</option>
+                </select>
+            </div>
+            <button class="tab-btn active" style="width:100%" onclick="randevuKaydet()">RANDEVU OLUŞTUR</button>
         </div>
-    </section>
+        <div style="display: flex; align-items: center; justify-content: center; text-align: center;">
+            <p>Seçtiğiniz berberin müsaitlik durumuna göre randevunuz anında sisteme düşer.</p>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2026 Ahmet Tekeli Erkek Kuaförü. Tüm Hakları Saklıdır.</p>
-        <p style="font-size: 0.8rem; color: #555; margin-top: 10px;">Created by EsnafMuhabbeti Design</p>
-    </footer>
+<!-- Yönetim Paneli (Randevular Buraya Düşüyor) -->
+<section id="yonetim" class="admin-panel">
+    <h2 class="title" style="font-size: 1.5rem;">Randevu Yönetim Paneli</h2>
+    <div class="admin-tabs">
+        <div class="tab-btn active" onclick="tabDegistir('Ahmet')">Ahmet</div>
+        <div class="tab-btn" onclick="tabDegistir('Ercan')">Ercan</div>
+        <div class="tab-btn" onclick="tabDegistir('Efe')">Efe</div>
+    </div>
+    
+    <div class="glass" style="padding: 20px; overflow-x: auto;">
+        <table class="appointment-table">
+            <thead>
+                <tr>
+                    <th>Müşteri</th>
+                    <th>Tarih</th>
+                    <th>Saat</th>
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody id="randevuListesi">
+                <!-- Veriler JS ile buraya gelecek -->
+            </tbody>
+        </table>
+    </div>
+</section>
 
-    <script>
-        // Sayfa içi kaydırma efekti
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+<footer>
+    <p>Ahmet Tekeli Erkek Kuaförü &copy; 2026 | Esnaf Muhabbeti İçerik Üretim Merkezi</p>
+</footer>
+
+<script>
+    // Örnek Veri Yapısı (LocalStorage kullanacağız ki sayfa yenilense de gitmesin)
+    let randevular = JSON.parse(localStorage.getItem('berber_randevular')) || [];
+    let aktifTab = 'Ahmet';
+
+    function randevuKaydet() {
+        const berber = document.getElementById('berberSec').value;
+        const ad = document.getElementById('musteriAd').value;
+        const tarih = document.getElementById('randevuTarih').value;
+        const saat = document.getElementById('randevuSaat').value;
+
+        if(!ad || !tarih) { alert("Lütfen tüm alanları doldurun!"); return; }
+
+        // Doluluk kontrolü
+        const dolu mu = randevular.find(r => r.berber === berber && r.tarih === tarih && r.saat === saat);
+        if(dolumu) {
+            alert("Bu saat bu berber için dolu! Lütfen başka bir saat seçin.");
+            return;
+        }
+
+        const yeniRandevu = { berber, ad, tarih, saat };
+        randevular.push(yeniRandevu);
+        localStorage.setItem('berber_randevular', JSON.stringify(randevular));
+        
+        alert(`Randevu ${berber} usta için başarıyla kaydedildi!`);
+        tabDegistir(aktifTab);
+    }
+
+    function tabDegistir(berberAdi) {
+        aktifTab = berberAdi;
+        // Tab butonlarını güncelle
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText === berberAdi) btn.classList.add('active');
         });
 
-        // Mouse hareketine duyarlı hafif cam parlama efekti (Opsiyonel geliştirme)
-        document.addEventListener('mousemove', (e) => {
-            const moveX = (e.clientX - window.innerWidth / 2) / 50;
-            const moveY = (e.clientY - window.innerHeight / 2) / 50;
-            document.querySelector('.hero h1').style.transform = `translate(${moveX}px, ${moveY}px)`;
+        const liste = document.getElementById('randevuListesi');
+        liste.innerHTML = '';
+
+        const filtreli = randevular.filter(r => r.berber === berberAdi);
+
+        filtreli.forEach(r => {
+            liste.innerHTML += `
+                <tr>
+                    <td>${r.ad}</td>
+                    <td>${r.tarih}</td>
+                    <td>${r.saat}</td>
+                    <td><span class="status-badge">Onaylandı</span></td>
+                </tr>
+            `;
         });
-    </script>
+    }
+
+    // İlk açılışta Ahmet'in randevularını göster
+    tabDegistir('Ahmet');
+</script>
+
 </body>
 </html>
