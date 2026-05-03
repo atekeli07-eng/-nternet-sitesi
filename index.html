@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmet Tekeli Erkek Kuaförü | Premium Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Genel Ayarlar */
+        :root {
+            --primary: #e67e22; /* Kehribar Vurgu */
+            --bg-dark: #0f0f0f;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            background-image: radial-gradient(circle at 50% -20%, #2c3e50, #0f0f0f);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Ortak Sınıf */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: 0.3s ease;
+        }
+
+        /* Navbar */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.8);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* Hero Bölümü */
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .btn-main {
+            padding: 15px 40px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            background: #d35400;
+        }
+
+        /* Hizmetler & Randevu */
+        .section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        /* Personel / Ustalar */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .staff-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .staff-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid var(--primary);
+        }
+
+        /* İletişim / Alt Bilgi */
+        footer {
+            padding: 50px 10%;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Ahmet Tekeli</div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Ahmet Tekeli Erkek Kuaförü</h1>
+        <p>Geleneksel Esnaf Kültürü, Modern Kesim Sanatı.</p>
+        <a href="#randevu" class="btn-main">ŞİMDİ RANDEVU AL</a>
+    </section>
+
+    <section class="section" id="hizmetler">
+        <h2 class="section-title">Hizmetlerimiz</h2>
+        <div class="grid">
+            <div class="glass-card service-card">
+                <i class="fas fa-cut"></i>
+                <h3>Stil Kesim</h3>
+                <p>Size en uygun yüz hattına göre modern saç tasarımı.</p>
+            </div>
+            <div class="glass-card service-card">
+                <i class="fas fa-razor"></i>
+                <h3>Sakal Tasarımı</h3>
+                <p>Sıcak havlu ve ustura ile pürüzsüz hatlar.</p>
+            </div>
+            <div class="glass-card service-card">
+                <i class="fas fa-spa"></i>
+                <h3>Cilt Bakımı</h3>
+                <p>Profesyonel maske ve buhar terapisi ile tazelenin.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="ekibimiz">
+        <h2 class="section-title">Ustalarımız</h2>
+        <div class="staff-grid">
+            <div class="glass-card staff-card">
+                <img src="https://via.placeholder.com/100" alt="Ahmet">
+                <h4>Ahmet Tekeli</h4>
+                <p>Master Barber</p>
+            </div>
+            <div class="glass-card staff-card">
+                <img src="https://via.placeholder.com/100" alt="Ercan">
+                <h4>Ercan</h4>
+                <p>Sakalların Efendisi</p>
+            </div>
+            <div class="glass-card staff-card">
+                <img src="https://via.placeholder.com/100" alt="Efe">
+                <h4>Efe</h4>
+                <p>Stil Uzmanı</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="randevu">
+        <div class="glass-card" style="padding: 50px; text-align: center;">
+            <h2 style="margin-bottom: 20px;">Dijital Randevu</h2>
+            <form id="randevuForm">
+                <input type="text" placeholder="Adınız Soyadınız" style="width: 80%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;"><br>
+                <select style="width: 80%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
+                    <option>Usta Seçin...</option>
+                    <option>Ahmet</option>
+                    <option>Ercan</option>
+                    <option>Efe</option>
+                </select><br>
+                <button type="button" class="btn-main" onclick="alert('Randevu talebiniz alındı! Sizinle iletişime geçeceğiz.')">TALEP GÖNDER</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Ahmet Tekeli Erkek Kuaförü. Tüm Hakları Saklıdır.</p>
+        <p style="font-size: 0.8rem; color: #555; margin-top: 10px;">Created by EsnafMuhabbeti Design</p>
+    </footer>
+
+    <script>
+        // Sayfa içi kaydırma efekti
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mouse hareketine duyarlı hafif cam parlama efekti (Opsiyonel geliştirme)
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) / 50;
+            const moveY = (e.clientY - window.innerHeight / 2) / 50;
+            document.querySelector('.hero h1').style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    </script>
+</body>
+</html>
